@@ -10,7 +10,7 @@ const GO_URL = 'http://localhost:8080'
 const GO_SECRET_KEY = process.env.SECRET_API_KEY
 
 class UsersService {
-  // --- HÀM PHỤ: MAP ADDRESS -> USERNAME ---
+  // MAP ADDRESS -> USERNAME 
   private async getAddressMap() {
     const users = await databaseService.users.find({}).toArray()
     const map: Record<string, string> = {}
@@ -65,7 +65,7 @@ class UsersService {
     const { privateKey, amount } = payload
     const currentTime = new Date().toLocaleString()
 
-    // Validate private key (basic check)
+    // Validate private key 
     if (!privateKey) throw new Error('Thiếu Private Key')
 
     const wallet = new Wallet(privateKey)
@@ -137,7 +137,7 @@ class UsersService {
       const lookupKey = rawAddress.toString().toLowerCase()
       let finalName = userMap[lookupKey]
 
-      // LOGIC QUAN TRỌNG: Lọc khách vãng lai
+      // Lọc khách vãng lai
       if (!finalName) {
         finalName = 'Khách vãng lai'
       }
@@ -159,4 +159,5 @@ class UsersService {
 
 const usersService = new UsersService()
 export default usersService
+
 
