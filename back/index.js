@@ -11,7 +11,7 @@ app.use(express.json());
 // --- CẤU HÌNH ---
 // Đảm bảo Blockchain Go đang chạy port 8080
 const GO_URL = "http://localhost:8080";
-const GO_SECRET_KEY = "MAT_KHAU_SIEU_KHO_123";
+const GO_SECRET_KEY = "8047468c59139613d5d07b7102148f3fa79cc16586cf398439d7637b53915bc5 ";
 
 const MONGO_URI =
   "mongodb+srv://hoavt2005:namsaulayvo@block.i0hqtna.mongodb.net/?appName=Block";
@@ -242,3 +242,4 @@ app.get("/api/rich-list", async (req, res) => {
 app.listen(3000, () => {
   console.log("Backend Mall chạy tại http://localhost:3000");
 });
+
