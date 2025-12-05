@@ -133,7 +133,7 @@ root/
 
   * **Backend**: Node.js, Express (implied), TypeScript, MongoDB.
   * **Blockchain**: Go (Golang).
-  * **Frontend**: HTML, CSS, JavaScript.
+  * **Frontend**: HTML, CSS, Tailwind CSS, JavaScript.
   * **Bảo mật**: JWT (JSON Web Tokens), SHA256 Hashing.
 
 <!-- end list -->
