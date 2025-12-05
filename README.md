@@ -127,12 +127,10 @@ const API_URL = "http://localhost:3000/api";
 
 ## 📝 Configuration (Biến môi trường)
 
-Trong thư mục `src`, bạn có thể cần tạo file `.env` để cấu hình các biến sau (dựa trên code `utils/jwt.ts` và database):
+
 
 ```env
-PORT=3000
-DB_URI=mongodb://localhost:27017/your_db_name
-JWT_SECRET=your_secret_key_here
+??Z
 ```
 
 -----
