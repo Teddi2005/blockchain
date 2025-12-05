@@ -19,7 +19,7 @@ class DatabaseService {
     try {
       await this.client.connect()
       console.log('☘️  Connected to MongoDB successfully')
-      this.db = this.client.db('account') // Reset DB instance ensure connection
+      this.db = this.client.db('account') 
     } catch (error) {
       console.error('Error connecting to MongoDB:', error)
     }
@@ -30,7 +30,7 @@ class DatabaseService {
     return this.client.db('account').collection('accounts')
   }
 
-  // Collection chứa Blockchain Blocks (Lưu ý tên DB là 'blockchain')
+  // Collection chứa Blockchain Blocks 
   get blocks(): Collection<Block> {
     return this.client.db('blockchain').collection('blocks')
   }
@@ -38,3 +38,4 @@ class DatabaseService {
 
 const databaseService = new DatabaseService()
 export default databaseService
+
