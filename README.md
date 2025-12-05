@@ -1,73 +1,142 @@
-Dưới đây là phiên bản `README.md` được **nâng cấp toàn diện**, chi tiết và chuyên nghiệp nhất dành cho dự án **HaTriDusChain** của bạn. Nó bao gồm sơ đồ kiến trúc, giải thích chuyên sâu, hướng dẫn cấu hình môi trường (env) và các lưu ý kỹ thuật quan trọng.
+Dưới đây là file `README.md` được viết chi tiết và chuyên nghiệp bằng tiếng Việt, phù hợp với cấu trúc dự án Fullstack Blockchain của bạn. Bạn có thể copy toàn bộ nội dung trong khối code bên dưới và lưu thành file `README.md` tại thư mục gốc.
 
-Bạn hãy copy toàn bộ nội dung trong khối mã dưới đây và lưu đè vào file `README.md` ở thư mục gốc dự án.
+````markdown
+# Blockchain Fullstack System
 
-
-http://googleusercontent.com/immersive_entry_chip/0
-✅ **Thành công:** Màn hình hiện:
-> `🚀 Server TypeScript đang chạy tại http://localhost:3000`
-> `☘️ Connected to MongoDB successfully`
-
-### 3️⃣ Terminal 3: Khởi chạy Frontend
-Giao diện người dùng.
-
-* **Phương pháp chuẩn (VS Code):**
-    1.  Cài Extension **"Live Server"**.
-    2.  Chuột phải vào file `front/index.html`.
-    3.  Chọn **"Open with Live Server"**.
-* **Phương pháp thủ công:** Mở trực tiếp file `front/index.html` bằng trình duyệt (Chrome/Edge).
+Dự án này là một hệ thống ứng dụng Blockchain hoàn chỉnh bao gồm 3 thành phần chính: lõi Blockchain xử lý dữ liệu (Go), Backend Server quản lý người dùng (TypeScript), và giao diện Frontend (HTML/JS).
 
 ---
 
-## ✨ Các Tính Năng Nổi Bật
+## 🏗️ Kiến trúc Dự án
 
-### 🔐 Hệ thống Xác thực & Ví (Auth & Wallet)
-* **Đăng ký thông minh:** Người dùng chỉ cần đăng ký tài khoản (User/Pass/Email), hệ thống tự động sinh ra một **Ví Blockchain** (Address & Private Key) duy nhất cho họ.
-* **Bảo mật:** Mật khẩu được mã hóa, phiên đăng nhập quản lý bằng JWT.
+Hệ thống được chia thành 3 thư mục chính:
 
-### 💸 Giao dịch & Quyên góp (Donation)
-* **Real-time:** Giao dịch quyên góp được gửi từ Frontend -> Backend -> Blockchain Core ngay lập tức.
-* **Minh bạch:** Mọi giao dịch đều có Hash riêng, có thể tra cứu lịch sử.
+1.  **`process/` (Blockchain Core)**:
+    * Được viết bằng **Go (Golang)**.
+    * [cite_start]Chịu trách nhiệm khởi tạo blockchain, khai thác (mining) khối mới và duy trì tính toàn vẹn của chuỗi[cite: 80, 94].
+    * Xử lý các logic tính toán nặng của hệ thống.
 
-### 🏆 Bảng Vàng (Rich List Algorithm)
-* **Bộ lọc thông minh:** Hệ thống tự động tính toán tổng tiền đóng góp.
-* **Anti-Spam:** Tự động loại bỏ các giao dịch từ "Khách vãng lai" (người dùng chưa đăng ký) hoặc các địa chỉ ví rác khỏi Top 5 để vinh danh đúng người thật.
-* **Thống kê thực:** Đếm chính xác số lượng **người dùng thực tế** tham gia (thay vì chỉ đếm số lượt giao dịch).
+2.  **`src/` (Backend API)**:
+    * [cite_start]Được viết bằng **TypeScript (Node.js)**[cite: 2].
+    * Cung cấp RESTful API cho Frontend.
+    * [cite_start]Quản lý xác thực người dùng (JWT), mã hóa mật khẩu và tương tác với cơ sở dữ liệu[cite: 3, 4, 10].
 
-### 🛡️ Thanh Tra Hệ Thống (Audit)
-* **Kiểm tra toàn vẹn:** Tính năng cho phép quét lại toàn bộ chuỗi khối từ Genesis Block đến hiện tại. Nếu có bất kỳ block nào bị sửa đổi dữ liệu trái phép, hệ thống sẽ cảnh báo đỏ ngay lập tức.
-
----
-
-## 🔌 API Documentation (Backend Endpoints)
-
-| Method | Endpoint | Yêu cầu Body | Mô tả |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/register` | `{username, password, email}` | Tạo tài khoản & Ví mới |
-| `POST` | `/api/login` | `{username, password}` | Đăng nhập hệ thống |
-| `POST` | `/api/donate` | `{privateKey, amount}` | Thực hiện quyên góp tiền |
-| `GET` | `/api/history` | - | Lấy 10 giao dịch mới nhất |
-| `GET` | `/api/rich-list` | - | Lấy BXH Top 5 (Đã lọc rác) |
-| `GET` | `/api/check-integrity`| - | Kiểm tra bảo mật chuỗi |
+3.  **`front/` (Frontend)**:
+    * [cite_start]Sử dụng **HTML5, CSS3, JavaScript (Vanilla)** thuần[cite: 13, 14, 22].
+    * [cite_start]Giao diện người dùng bao gồm: Đăng nhập, Đăng ký và Dashboard quản lý[cite: 14, 18, 20].
+    * [cite_start]Kết nối với Backend thông qua API[cite: 25].
 
 ---
 
-## ❓ Khắc Phục Sự Cố (Troubleshooting)
+## 📂 Cấu trúc Thư mục
 
-**Q1: Tại sao tôi không thể Đăng ký/Đăng nhập?**
-> **A:** Kiểm tra lại kết nối MongoDB. Đảm bảo IP máy bạn đã được Whitelist trên MongoDB Atlas. Xem file `src/services/database.services.ts`.
+```text
+root/
+├── process/                # --- Lõi Blockchain (Go) ---
+│   ├── blockchain/         # Logic xử lý Block và Chain
+│   ├── main.go             # Điểm khởi chạy (Entry point)
+│   ├── go.mod              # Quản lý thư viện Go
+│   └── ...
+│
+├── src/                    # --- Backend API (TypeScript) ---
+│   ├── controllers/        # Xử lý logic nghiệp vụ (Users)
+│   ├── models/             # Định nghĩa cấu trúc dữ liệu (Schemas)
+│   ├── routes/             # Định nghĩa các đường dẫn API
+│   ├── services/           # Services (Database, Logic)
+│   ├── utils/              # Tiện ích (Crypto, JWT, Validation)
+│   ├── index.ts            # Điểm khởi chạy Server
+│   └── ...
+│
+└── front/                  # --- Frontend (Static Web) ---
+    ├── css/                # Stylesheets
+    ├── html/               # Các trang giao diện (Login, Register, Dashboard)
+    ├── js/                 # Logic JS và cấu hình API
+    └── ...
+````
 
-**Q2: Tại sao gửi tiền cứ xoay mãi (Loading...) không xong?**
-> **A:** Rất có thể **Blockchain Core (Terminal 1)** chưa chạy hoặc bị tắt. Backend cần Core hoạt động để ghi Block.
+-----
 
-**Q3: Tại sao cài `npm install` bị lỗi?**
-> **A:** Thử xóa thư mục `node_modules` và file `package-lock.json` rồi chạy lại `npm install`.
+## 🚀 Hướng dẫn Cài đặt & Chạy
 
-**Q4: Lỗi CORS khi gọi API?**
-> **A:** Backend đã được tích hợp sẵn gói `cors`. Hãy đảm bảo bạn truy cập Frontend qua `localhost` hoặc `127.0.0.1`.
+Để hệ thống hoạt động, bạn cần khởi chạy đồng thời cả 3 thành phần.
 
----
+### Yêu cầu tiên quyết (Prerequisites)
 
-**© 2025 HaTriDusChain Project.**
-*Developed with ❤️ for Education & Community.*
+  * **Go**: Phiên bản 1.18+
+  * **Node.js**: Phiên bản 16+
+  * **MongoDB**: Cơ sở dữ liệu để lưu trữ thông tin người dùng.
+
+### Bước 1: Cấu hình & Chạy Backend (`src`)
+
+1.  Mở terminal và di chuyển vào thư mục `src`:
+    ```bash
+    cd src
+    ```
+2.  Cài đặt các thư viện:
+    ```bash
+    npm install
+    ```
+3.  Tạo file `.env` (nếu chưa có) để cấu hình kết nối Database và JWT secret.
+4.  Khởi chạy server (mặc định port 3000):
+    ```bash
+    npm run dev
+    # Hoặc chạy trực tiếp:
+    npx ts-node index.ts
+    ```
+    *Backend sẽ chạy tại `http://localhost:3000`.*
+
+### Bước 2: Chạy Blockchain Node (`process`)
+
+1.  Mở một terminal **mới** và di chuyển vào thư mục `process`:
+    ```bash
+    cd process
+    ```
+2.  Tải các module cần thiết:
+    ```bash
+    go mod tidy
+    ```
+3.  Chạy node blockchain:
+    ```bash
+    go run main.go
+    ```
+
+### Bước 3: Chạy Frontend (`front`)
+
+1.  [cite_start]Kiểm tra cấu hình API tại `front/js/config.js`[cite: 25]:
+
+    ```javascript
+    const API_URL = "http://localhost:3000/api";
+    ```
+
+    *Đảm bảo port này khớp với port Backend đang chạy.*
+
+2.  Mở giao diện web:
+
+      * **Cách 1 (Khuyên dùng):** Sử dụng **Live Server** trên VS Code để mở file `front/html/login.html`.
+      * **Cách 2:** Mở trực tiếp file `front/html/login.html` bằng trình duyệt.
+
+-----
+
+## ✨ Tính năng Chính
+
+  * **Quản lý người dùng**:
+      * [cite_start]Đăng ký tài khoản mới (mã hóa mật khẩu an toàn)[cite: 20, 8].
+      * [cite_start]Đăng nhập lấy Token (JWT Authentication)[cite: 18, 10].
+  * **Blockchain**:
+      * [cite_start]Khởi tạo khối (Block creation) và chuỗi (Chain management)[cite: 80].
+  * **Giao diện Dashboard**:
+      * [cite_start]Hiển thị thông tin tổng quan và trạng thái hệ thống[cite: 14, 26].
+
+-----
+
+## 🔧 Công nghệ sử dụng
+
+  * **Backend**: Node.js, Express (implied), TypeScript, MongoDB.
+  * **Blockchain**: Go (Golang).
+  * **Frontend**: HTML, CSS, JavaScript.
+  * **Bảo mật**: JWT (JSON Web Tokens), SHA256 Hashing.
+
+<!-- end list -->
+
+```
 ```
