@@ -17,7 +17,7 @@ import (
 )
 
 // --- CẤU HÌNH BẢO MẬT ---
-const SECRET_API_KEY = "MAT_KHAU_SIEU_KHO_123"
+const SECRET_API_KEY = "8047468c59139613d5d07b7102148f3fa79cc16586cf398439d7637b53915bc5 "
 
 // --- BIẾN TOÀN CỤC ---
 var collection *mongo.Collection
@@ -168,4 +168,5 @@ func main() {
 
 	fmt.Println(" Server Blockchain đang chạy tại cổng 8080...")
 	r.Run(":8080")
+
 }
