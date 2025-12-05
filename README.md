@@ -1,59 +1,73 @@
-Đây là nội dung file `README.md` được định dạng chuẩn Markdown. Bạn hãy tạo một file mới có tên là `README.md` trong thư mục gốc của dự án và dán toàn bộ nội dung trong khối mã bên dưới vào.
+Dưới đây là phiên bản `README.md` được **nâng cấp toàn diện**, chi tiết và chuyên nghiệp nhất dành cho dự án **HaTriDusChain** của bạn. Nó bao gồm sơ đồ kiến trúc, giải thích chuyên sâu, hướng dẫn cấu hình môi trường (env) và các lưu ý kỹ thuật quan trọng.
+
+Bạn hãy copy toàn bộ nội dung trong khối mã dưới đây và lưu đè vào file `README.md` ở thư mục gốc dự án.
 
 
 http://googleusercontent.com/immersive_entry_chip/0
-✅ **Thành công:** Terminal báo `🚀 Server TypeScript đang chạy tại http://localhost:3000` và `Connected to MongoDB`.
+✅ **Thành công:** Màn hình hiện:
+> `🚀 Server TypeScript đang chạy tại http://localhost:3000`
+> `☘️ Connected to MongoDB successfully`
 
-### 3️⃣ Bước 3: Mở Frontend (Giao diện)
-Giao diện để người dùng thao tác.
+### 3️⃣ Terminal 3: Khởi chạy Frontend
+Giao diện người dùng.
 
-* **Cách 1 (Khuyên dùng):** Cài extension **Live Server** trên VS Code -> Chuột phải vào `front/index.html` -> Chọn **Open with Live Server**.
-* **Cách 2:** Mở trực tiếp file `front/index.html` bằng trình duyệt Chrome/Edge.
-
----
-
-## 📖 Hướng Dẫn Sử Dụng
-
-1.  **Đăng Ký:**
-    * Nhập *Tên đăng nhập*, *Email* và *Mật khẩu*.
-    * Hệ thống sẽ tự động tạo một ví Blockchain (Address & Private Key) cho bạn.
-2.  **Quyên Góp (Donate):**
-    * Đăng nhập vào hệ thống.
-    * Nhập số tiền và nhấn **Gửi**.
-    * Giao dịch sẽ được đẩy xuống Blockchain Core để ghi nhận.
-3.  **Bảng Vàng (Rich List):**
-    * Xem Top 5 người đóng góp nhiều nhất.
-    * **Lưu ý:** Hệ thống tự động lọc bỏ "Khách vãng lai" (những người chưa đăng ký tài khoản).
-4.  **Kiểm Tra Tính Toàn Vẹn:**
-    * Nhấn nút "Kiểm tra" để quét lại toàn bộ chuỗi khối xem có bị hack hay chỉnh sửa không.
+* **Phương pháp chuẩn (VS Code):**
+    1.  Cài Extension **"Live Server"**.
+    2.  Chuột phải vào file `front/index.html`.
+    3.  Chọn **"Open with Live Server"**.
+* **Phương pháp thủ công:** Mở trực tiếp file `front/index.html` bằng trình duyệt (Chrome/Edge).
 
 ---
 
-## 🔌 Danh Sách API (Backend Endpoints)
+## ✨ Các Tính Năng Nổi Bật
 
-| Method | Endpoint | Chức năng | Body Yêu Cầu |
+### 🔐 Hệ thống Xác thực & Ví (Auth & Wallet)
+* **Đăng ký thông minh:** Người dùng chỉ cần đăng ký tài khoản (User/Pass/Email), hệ thống tự động sinh ra một **Ví Blockchain** (Address & Private Key) duy nhất cho họ.
+* **Bảo mật:** Mật khẩu được mã hóa, phiên đăng nhập quản lý bằng JWT.
+
+### 💸 Giao dịch & Quyên góp (Donation)
+* **Real-time:** Giao dịch quyên góp được gửi từ Frontend -> Backend -> Blockchain Core ngay lập tức.
+* **Minh bạch:** Mọi giao dịch đều có Hash riêng, có thể tra cứu lịch sử.
+
+### 🏆 Bảng Vàng (Rich List Algorithm)
+* **Bộ lọc thông minh:** Hệ thống tự động tính toán tổng tiền đóng góp.
+* **Anti-Spam:** Tự động loại bỏ các giao dịch từ "Khách vãng lai" (người dùng chưa đăng ký) hoặc các địa chỉ ví rác khỏi Top 5 để vinh danh đúng người thật.
+* **Thống kê thực:** Đếm chính xác số lượng **người dùng thực tế** tham gia (thay vì chỉ đếm số lượt giao dịch).
+
+### 🛡️ Thanh Tra Hệ Thống (Audit)
+* **Kiểm tra toàn vẹn:** Tính năng cho phép quét lại toàn bộ chuỗi khối từ Genesis Block đến hiện tại. Nếu có bất kỳ block nào bị sửa đổi dữ liệu trái phép, hệ thống sẽ cảnh báo đỏ ngay lập tức.
+
+---
+
+## 🔌 API Documentation (Backend Endpoints)
+
+| Method | Endpoint | Yêu cầu Body | Mô tả |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/api/register` | Đăng ký tài khoản | `{ username, password, email }` |
-| `POST` | `/api/login` | Đăng nhập | `{ username, password }` |
-| `POST` | `/api/donate` | Quyên góp tiền | `{ privateKey, amount }` |
-| `GET` | `/api/history` | Lấy lịch sử giao dịch | - |
-| `GET` | `/api/rich-list` | Lấy bảng xếp hạng (Đã lọc) | - |
-| `GET` | `/api/check-integrity` | Kiểm tra chuỗi khối | - |
+| `POST` | `/api/register` | `{username, password, email}` | Tạo tài khoản & Ví mới |
+| `POST` | `/api/login` | `{username, password}` | Đăng nhập hệ thống |
+| `POST` | `/api/donate` | `{privateKey, amount}` | Thực hiện quyên góp tiền |
+| `GET` | `/api/history` | - | Lấy 10 giao dịch mới nhất |
+| `GET` | `/api/rich-list` | - | Lấy BXH Top 5 (Đã lọc rác) |
+| `GET` | `/api/check-integrity`| - | Kiểm tra bảo mật chuỗi |
 
 ---
 
 ## ❓ Khắc Phục Sự Cố (Troubleshooting)
 
-**Q: Tại sao tôi không thể đăng ký?**
-> **A:** Kiểm tra xem MongoDB đã bật chưa. Xem lại chuỗi kết nối trong `src/services/database.services.ts`.
+**Q1: Tại sao tôi không thể Đăng ký/Đăng nhập?**
+> **A:** Kiểm tra lại kết nối MongoDB. Đảm bảo IP máy bạn đã được Whitelist trên MongoDB Atlas. Xem file `src/services/database.services.ts`.
 
-**Q: Tại sao gửi tiền cứ xoay mãi (Loading)?**
-> **A:** Kiểm tra xem cửa sổ **Blockchain Core (Go)** có đang chạy không. Nếu Core tắt, Backend không thể gửi giao dịch.
+**Q2: Tại sao gửi tiền cứ xoay mãi (Loading...) không xong?**
+> **A:** Rất có thể **Blockchain Core (Terminal 1)** chưa chạy hoặc bị tắt. Backend cần Core hoạt động để ghi Block.
 
-**Q: Lỗi CORS khi gọi API?**
-> **A:** Đảm bảo Backend đã cài `cors`. Code hiện tại trong `src/index.ts` đã bật sẵn: `app.use(cors())`.
+**Q3: Tại sao cài `npm install` bị lỗi?**
+> **A:** Thử xóa thư mục `node_modules` và file `package-lock.json` rồi chạy lại `npm install`.
+
+**Q4: Lỗi CORS khi gọi API?**
+> **A:** Backend đã được tích hợp sẵn gói `cors`. Hãy đảm bảo bạn truy cập Frontend qua `localhost` hoặc `127.0.0.1`.
 
 ---
 
-*© 2025 HaTriDusChain Project - Built with Passion.*
+**© 2025 HaTriDusChain Project.**
+*Developed with ❤️ for Education & Community.*
 ```
