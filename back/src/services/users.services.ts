@@ -102,8 +102,6 @@ class UsersService {
 
     // Map tên hiển thị
     const prettyHistory = history.map((block: any) => {
-      // Go Block lưu address ở field 'user' hoặc 'address', tùy code Go của bạn
-      // Code JS cũ của bạn dùng block.address để map
       const rawAddr = block.address || block.user || ''
       const lookupKey = rawAddr.toLowerCase()
       const displayName = userMap[lookupKey] || rawAddr || 'Ẩn danh'
@@ -161,3 +159,4 @@ class UsersService {
 
 const usersService = new UsersService()
 export default usersService
+
