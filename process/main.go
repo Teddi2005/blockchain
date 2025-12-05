@@ -5,25 +5,21 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
-	// 👇 CHÚ Ý: Đảm bảo đường dẫn này khớp với tên module và folder của bạn
-	// Nếu folder là 'block' thì sửa thành ".../block"
 	block "github.com/Teddi2005/blockchain/blockchain"
-
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-// --- CẤU HÌNH BẢO MẬT ---
+// --- bảo mật giữa web và core ---
 const SECRET_API_KEY = "8047468c59139613d5d07b7102148f3fa79cc16586cf398439d7637b53915bc5 "
 
-// --- BIẾN TOÀN CỤC ---
+// --- biến global ---
 var collection *mongo.Collection
 var ctx = context.TODO()
 
-// --- KẾT NỐI MONGODB ---
+// --- kết nói mongoDB ---
 func initMongoDB() {
 	const connectionString = "mongodb+srv://hoavt2005:namsaulayvo@block.i0hqtna.mongodb.net/?appName=Block"
 
@@ -42,7 +38,7 @@ func initMongoDB() {
 	collection = client.Database("blockchain").Collection("blocks")
 }
 
-// --- LẤY BLOCK MỚI NHẤT (HOẶC TẠO GENESIS) ---
+// --- lâys block mới nhất ---
 func getLatestBlock() block.Block {
 	var result block.Block
 	// Sắp xếp giảm dần theo Index để lấy block mới nhất
@@ -66,7 +62,7 @@ func main() {
 	// 2. Khởi tạo Web Server
 	r := gin.Default()
 
-	// --- API 1: THÊM BLOCK (CÓ BẢO MẬT) ---
+	// --- API 1: add block ---
 	r.POST("/add-block", func(c *gin.Context) {
 		// A. Kiểm tra mật khẩu (API Key) từ Header
 		clientKey := c.GetHeader("X-API-Key")
@@ -110,7 +106,7 @@ func main() {
 		})
 	})
 
-	// --- API 2: KIỂM TRA GIAN LẬN (INTEGRITY CHECK) ---
+	// --- API 2: kiểm tra gian lận---
 	r.GET("/check-integrity", func(c *gin.Context) {
 		// Chỉ lấy 1000 block mới nhất để kiểm tra
 		limit := int64(1000)
@@ -170,3 +166,4 @@ func main() {
 	r.Run(":8080")
 
 }
+
